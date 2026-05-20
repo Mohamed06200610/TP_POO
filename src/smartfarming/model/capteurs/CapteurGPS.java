@@ -13,12 +13,12 @@ import TP_POO.src.smartfarming.model.zones.Zone;
  * Classe CapteurGPS — Capteur GPS pour le suivi de position d'un animal.
  *
  * Rôle : Envoie la position géographique (latitude/longitude) d'un animal.
- *        Après chaque relevé, vérifie si l'animal est dans les limites de sa zone.
- *        Déclenche une alerte CRITIQUE si l'animal est hors zone.
+ * Après chaque relevé, vérifie si l'animal est dans les limites de sa zone.
+ * Déclenche une alerte CRITIQUE si l'animal est hors zone.
  *
  * Concept POO :
- *   HÉRITAGE — étend Capteur avec une logique GPS spécifique.
- *   POLYMORPHISME — envoyerReleve() retourne un ReleveGPS (pas numérique).
+ * HÉRITAGE — étend Capteur avec une logique GPS spécifique.
+ * POLYMORPHISME — envoyerReleve() retourne un ReleveGPS (pas numérique).
  */
 public class CapteurGPS extends Capteur {
 
@@ -33,7 +33,7 @@ public class CapteurGPS extends Capteur {
      * @param alerteManager gestionnaire d'alertes
      */
     public CapteurGPS(String codeZone, double seuilMin, double seuilMax,
-                      AlerteManager alerteManager) {
+            AlerteManager alerteManager) {
         super(TypeCapteur.GPS, codeZone, seuilMin, seuilMax, alerteManager);
         this.zoneReference = null;
     }

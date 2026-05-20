@@ -28,12 +28,6 @@ public abstract class HistoriqueProduction {
 
     private static int compteur = 0;
 
-    /**
-     * Constructeur.
-     *
-     * @param codeZone code de la zone de production
-     * @param typeZone type de la zone
-     */
     public HistoriqueProduction(String codeZone, TypeZone typeZone) {
         this.id = "HIST-" + (++compteur);
         this.date = new Date();
@@ -77,16 +71,7 @@ public abstract class HistoriqueProduction {
 
     // ── Méthodes abstraites ────────────────────────────────
 
-    /**
-     * Enregistre les données de production spécifiques au type de zone.
-     */
     public abstract void enregistrer();
 
-    /**
-     * Retourne un résumé formaté de la production.
-     * Chaque sous-classe génère un format adapté à ses métriques.
-     *
-     * @return résumé lisible de la production
-     */
     public abstract String getResume();
 }

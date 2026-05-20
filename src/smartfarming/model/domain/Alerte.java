@@ -7,15 +7,6 @@ import TP_POO.src.smartfarming.enums.TypeCapteur;
 import TP_POO.src.smartfarming.model.capteurs.Capteur;
 import TP_POO.src.smartfarming.model.releves.Releve;
 
-/**
- * Classe Alerte — Représente une alerte déclenchée par un dépassement de seuil.
- *
- * Rôle : Modélise une alerte avec son relevé source, le capteur concerné,
- * le niveau de gravité et son statut (active, acquittée, supprimée).
- *
- * Concept POO : ENCAPSULATION — attributs privés, cycle de vie géré
- * en interne (ACTIVE → ACQUITTEE / SUPPRIMEE).
- */
 public class Alerte {
 
     private String id;
@@ -27,13 +18,6 @@ public class Alerte {
 
     private static int compteur = 0;
 
-    /**
-     * Constructeur.
-     *
-     * @param releve        le relevé ayant déclenché l'alerte
-     * @param capteur       le capteur source
-     * @param niveauGravite niveau de gravité (AVERTISSEMENT ou CRITIQUE)
-     */
     public Alerte(Releve releve, Capteur capteur, NiveauGravite niveauGravite) {
         this.id = "ALR-" + (++compteur);
         this.releve = releve;
@@ -42,8 +26,6 @@ public class Alerte {
         this.statut = StatutAlerte.ACTIVE;
         this.horodatage = new Date();
     }
-
-    // ── Getters / Setters ──────────────────────────────────
 
     public String getId() {
         return id;
@@ -93,22 +75,10 @@ public class Alerte {
         this.horodatage = horodatage;
     }
 
-    // ── Méthodes utilitaires ───────────────────────────────
-
-    /**
-     * Retourne le type du capteur ayant déclenché l'alerte.
-     *
-     * @return le type de capteur
-     */
     public TypeCapteur getTypeCapteur() {
         return capteur.getTypeCapteur();
     }
 
-    /**
-     * Retourne le code de zone du capteur.
-     *
-     * @return le code de zone
-     */
     public String getCodeZone() {
         return capteur.getCodeZone();
     }

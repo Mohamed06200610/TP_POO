@@ -199,32 +199,12 @@ public abstract class Capteur implements ISuspendable, IVisualisable {
         }
     }
 
-    // ── Méthodes métier ────────────────────────────────────
-
-    /**
-     * Change le statut du capteur.
-     *
-     * @param statut nouveau statut
-     */
     public void changerStatut(StatutCapteur statut) {
         this.statut = statut;
     }
 
-    /**
-     * Envoie un relevé. BLOQUÉ si le capteur n'est pas ACTIF.
-     * Chaque sous-classe implémente la logique spécifique de mesure.
-     *
-     * @return le relevé généré, ou null si le capteur est inactif
-     */
     public abstract Releve envoyerReleve();
 
-    /**
-     * Vérifie si une valeur dépasse les seuils et déclenche une alerte si
-     * nécessaire.
-     *
-     * @param releve le relevé à vérifier
-     * @param valeur la valeur numérique à comparer aux seuils
-     */
     protected void verifierSeuils(Releve releve, double valeur) {
         if (valeur < seuilMin || valeur > seuilMax) {
             if (alerteManager != null) {
@@ -233,12 +213,6 @@ public abstract class Capteur implements ISuspendable, IVisualisable {
         }
     }
 
-    /**
-     * Détermine le niveau de gravité d'une valeur par rapport aux seuils.
-     *
-     * @param valeur la valeur à évaluer
-     * @return NORMAL, AVERTISSEMENT ou CRITIQUE
-     */
     public NiveauGravite determinerNiveau(double valeur) {
         if (valeur >= seuilMin && valeur <= seuilMax) {
             return NiveauGravite.NORMAL;
@@ -256,11 +230,6 @@ public abstract class Capteur implements ISuspendable, IVisualisable {
         return NiveauGravite.CRITIQUE;
     }
 
-    /**
-     * Retourne le dernier relevé de l'historique.
-     *
-     * @return dernier relevé, ou null si aucun
-     */
     public Releve getDernierReleve() {
         if (historique.isEmpty()) {
             return null;

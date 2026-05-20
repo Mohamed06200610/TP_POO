@@ -4,16 +4,6 @@ import java.util.Date;
 import TP_POO.src.smartfarming.enums.StageCroissance;
 import TP_POO.src.smartfarming.enums.TypeCulture;
 
-/**
- * Classe Culture — Représente une culture végétale dans une zone de culture.
- *
- * Rôle : Modélise une culture avec son type, ses dates, son stade de croissance
- * et ses exigences pédologiques (pH, humidité optimale).
- *
- * Concept POO : ENCAPSULATION — tous les attributs sont privés avec
- * getters/setters.
- * Les règles métier (progression des stades) sont gérées en interne.
- */
 public class Culture {
 
     private String id;
@@ -26,15 +16,6 @@ public class Culture {
 
     private static int compteur = 0;
 
-    /**
-     * Constructeur.
-     *
-     * @param typeCulture      type de culture (CEREALE, LEGUME, FRUIT)
-     * @param datePlantation   date de plantation
-     * @param dateRecoltePrevu date de récolte prévue
-     * @param phOptimal        pH optimal du sol
-     * @param humiditeOptimale humidité optimale du sol (en %)
-     */
     public Culture(TypeCulture typeCulture, Date datePlantation, Date dateRecoltePrevu,
             double phOptimal, double humiditeOptimale) {
         this.id = "CUL-" + (++compteur);
@@ -64,11 +45,6 @@ public class Culture {
         this.typeCulture = typeCulture;
     }
 
-    /**
-     * Retourne la famille de la culture (synonyme de typeCulture).
-     *
-     * @return la famille (CEREALE, LEGUME, FRUIT)
-     */
     public TypeCulture getFamille() {
         return typeCulture;
     }

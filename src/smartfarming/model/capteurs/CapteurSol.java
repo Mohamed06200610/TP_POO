@@ -10,11 +10,11 @@ import TP_POO.src.smartfarming.model.releves.ReleveNumerique;
  * Classe CapteurSol — Capteur mesurant les propriétés du sol.
  *
  * Rôle : Mesure le pH, l'humidité du sol et la teneur en azote dans les zones
- *        de culture. Envoie des ReleveNumerique.
+ * de culture. Envoie des ReleveNumerique.
  *
  * Concept POO :
- *   HÉRITAGE — étend Capteur avec une logique de mesure pédologique.
- *   POLYMORPHISME — envoyerReleve() retourne un ReleveNumerique simulé.
+ * HÉRITAGE — étend Capteur avec une logique de mesure pédologique.
+ * POLYMORPHISME — envoyerReleve() retourne un ReleveNumerique simulé.
  */
 public class CapteurSol extends Capteur {
 
@@ -29,7 +29,7 @@ public class CapteurSol extends Capteur {
      * @param alerteManager gestionnaire d'alertes
      */
     public CapteurSol(String codeZone, double seuilMin, double seuilMax,
-                      AlerteManager alerteManager) {
+            AlerteManager alerteManager) {
         super(TypeCapteur.SOL, codeZone, seuilMin, seuilMax, alerteManager);
         this.grandeurMesuree = "pH";
     }

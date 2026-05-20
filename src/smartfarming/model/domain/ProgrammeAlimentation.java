@@ -15,13 +15,6 @@ public class ProgrammeAlimentation {
     private double quantiteParRepas;
     private int nombreRepas;
 
-    /**
-     * Constructeur.
-     *
-     * @param typeAliment      type d'aliment (ex: "Foin", "Granulés")
-     * @param quantiteParRepas quantité par repas en kg
-     * @param nombreRepas      nombre de repas par jour
-     */
     public ProgrammeAlimentation(String typeAliment, double quantiteParRepas, int nombreRepas) {
         this.typeAliment = typeAliment;
         this.quantiteParRepas = quantiteParRepas;

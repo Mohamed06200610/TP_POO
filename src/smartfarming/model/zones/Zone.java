@@ -10,24 +10,6 @@ import TP_POO.src.smartfarming.interfaces.ISuspendable;
 import TP_POO.src.smartfarming.model.capteurs.Capteur;
 import TP_POO.src.smartfarming.model.historique.HistoriqueProduction;
 
-/**
- * Classe abstraite Zone — Représente une zone géographique de la ferme.
- *
- * Rôle : Classe de base pour les trois types de zones (Culture, Élevage,
- * Aquacole).
- * Gère le code, le nom, le type, le statut, les capteurs et l'historique
- * de production. Implémente ISuspendable pour la gestion du cycle de vie.
- *
- * Concept POO :
- * ABSTRACTION — déclare enregistrerProduction() abstrait, forcant chaque
- * sous-classe à créer sa propre sous-classe d'HistoriqueProduction.
- * INTERFACE — implémente ISuspendable (activer/suspendre/getStatut).
- * ENCAPSULATION — tous les attributs sont privés.
- *
- * Règle métier clé :
- * suspendre() cascade automatiquement à TOUS les capteurs de la zone.
- * activer() restaure TOUS les capteurs.
- */
 public abstract class Zone implements ISuspendable {
 
     private String code;
@@ -43,13 +25,6 @@ public abstract class Zone implements ISuspendable {
     private double longitudeMin;
     private double longitudeMax;
 
-    /**
-     * Constructeur.
-     *
-     * @param code     code unique de la zone
-     * @param nom      nom descriptif de la zone
-     * @param typeZone type de zone (CULTURE, ELEVAGE, AQUACOLE)
-     */
     public Zone(String code, String nom, TypeZone typeZone) {
         this.code = code;
         this.nom = nom;
@@ -148,9 +123,6 @@ public abstract class Zone implements ISuspendable {
 
     // ── ISuspendable ───────────────────────────────────────
 
-    /**
-     * Active la zone et restaure TOUS ses capteurs (cascade).
-     */
     @Override
     public void activer() {
         this.statut = StatutZone.ACTIVE;
@@ -159,10 +131,6 @@ public abstract class Zone implements ISuspendable {
         }
     }
 
-    /**
-     * Suspend la zone et cascade la suspension à TOUS ses capteurs.
-     * Un capteur suspendu ne peut plus envoyer de relevés.
-     */
     @Override
     public void suspendre() {
         this.statut = StatutZone.SUSPENDUE;
@@ -171,11 +139,6 @@ public abstract class Zone implements ISuspendable {
         }
     }
 
-    /**
-     * Retourne le statut sous forme de chaîne.
-     *
-     * @return "ACTIVE" ou "SUSPENDUE"
-     */
     @Override
     public String getStatut() {
         return statut.name();
@@ -183,21 +146,10 @@ public abstract class Zone implements ISuspendable {
 
     // ── Méthodes métier ────────────────────────────────────
 
-    /**
-     * Ajoute un capteur à la zone.
-     *
-     * @param capteur le capteur à ajouter
-     */
     public void ajouterCapteur(Capteur capteur) {
         this.capteurs.add(capteur);
     }
 
-    /**
-     * Vérifie si un point GPS est dans les limites géographiques de la zone.
-     *
-     * @param coordonnees les coordonnées à vérifier
-     * @return true si le point est dans les limites
-     */
     public boolean estDansLimites(Coordonnees coordonnees) {
         return coordonnees.getLatitude() >= latitudeMin
                 && coordonnees.getLatitude() <= latitudeMax
@@ -205,14 +157,6 @@ public abstract class Zone implements ISuspendable {
                 && coordonnees.getLongitude() <= longitudeMax;
     }
 
-    /**
-     * Définit les limites géographiques de la zone.
-     *
-     * @param latMin latitude minimale
-     * @param latMax latitude maximale
-     * @param lngMin longitude minimale
-     * @param lngMax longitude maximale
-     */
     public void definirLimites(double latMin, double latMax, double lngMin, double lngMax) {
         this.latitudeMin = latMin;
         this.latitudeMax = latMax;
@@ -220,21 +164,10 @@ public abstract class Zone implements ISuspendable {
         this.longitudeMax = lngMax;
     }
 
-    /**
-     * Retourne le nombre d'entités hébergées dans la zone.
-     * Chaque sous-classe implémente sa propre logique de comptage.
-     *
-     * @return nombre d'entités
-     */
     public abstract int getNombreEntites();
 
     /**
      * Enregistre la production de la zone.
-     * Chaque sous-classe crée sa propre sous-classe d'HistoriqueProduction.
-     *
-     * Polymorphisme : ZoneCulture → HistoriqueProductionCulture,
-     * ZoneElevage → HistoriqueProductionElevage,
-     * ZoneAquacole → HistoriqueProductionAquacole.
      */
     public abstract void enregistrerProduction();
 

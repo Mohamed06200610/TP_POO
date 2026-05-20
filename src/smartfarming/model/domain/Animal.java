@@ -7,15 +7,6 @@ import TP_POO.src.smartfarming.enums.TypeAnimal;
 import TP_POO.src.smartfarming.model.capteurs.CapteurBiometrique;
 import TP_POO.src.smartfarming.model.capteurs.CapteurGPS;
 
-/**
- * Classe Animal — Représente un animal dans une zone d'élevage.
- *
- * Rôle : Modélise un animal avec son espèce, son âge, son poids, son état
- *        de santé, ses capteurs biométriques et son collier GPS optionnel.
- *
- * Concept POO : ENCAPSULATION — attributs privés.
- *               COMPOSITION — contient des capteurs biométriques et un collier GPS.
- */
 public class Animal {
 
     private String id;
@@ -42,18 +33,53 @@ public class Animal {
 
     // ── Getters / Setters ──────────────────────────────────
 
-    public String getId() { return id; }
-    public TypeAnimal getEspece() { return espece; }
-    public void setEspece(TypeAnimal espece) { this.espece = espece; }
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
-    public double getPoids() { return poids; }
-    public void setPoids(double poids) { this.poids = poids; }
-    public EtatSante getEtatSante() { return etatSante; }
-    public void setEtatSante(EtatSante etatSante) { this.etatSante = etatSante; }
-    public List<CapteurBiometrique> getCapteursBiometriques() { return capteursBiometriques; }
-    public CapteurGPS getCollierGPS() { return collierGPS; }
-    public void setCollierGPS(CapteurGPS collierGPS) { this.collierGPS = collierGPS; }
+    public String getId() {
+        return id;
+    }
+
+    public TypeAnimal getEspece() {
+        return espece;
+    }
+
+    public void setEspece(TypeAnimal espece) {
+        this.espece = espece;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getPoids() {
+        return poids;
+    }
+
+    public void setPoids(double poids) {
+        this.poids = poids;
+    }
+
+    public EtatSante getEtatSante() {
+        return etatSante;
+    }
+
+    public void setEtatSante(EtatSante etatSante) {
+        this.etatSante = etatSante;
+    }
+
+    public List<CapteurBiometrique> getCapteursBiometriques() {
+        return capteursBiometriques;
+    }
+
+    public CapteurGPS getCollierGPS() {
+        return collierGPS;
+    }
+
+    public void setCollierGPS(CapteurGPS collierGPS) {
+        this.collierGPS = collierGPS;
+    }
 
     // ── Méthodes métier ────────────────────────────────────
 
